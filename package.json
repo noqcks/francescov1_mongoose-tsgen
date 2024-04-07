@@ -14,7 +14,7 @@
   "bugs": "https://github.com/francescov1/mongoose-tsgen/issues",
   "dependencies": {
     "@oclif/core": "^2.1.4",
-    "glob": "^7.1.6",
+    "glob": "^10.3.12",
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.4",
     "prettier": "^2.5.1",
