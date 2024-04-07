@@ -10,7 +10,7 @@ import prettier from "prettier";
 // NOTE: this could be sped up by formatting the generated file string prior to writing (no need to write file then read it again here and re-write it)
 const prettifyFiles = (filePaths: string[]) => {
   const config =
-    prettier.resolveConfig.sync(process.cwd(), { useCache: true, editorconfig: true }) ?? {};
+    prettier.resolveConfig(process.cwd(), { useCache: true, editorconfig: true }).then(config => config ?? {});
 
   filePaths.forEach((filePath: string) => {
     const ogContent = fs.readFileSync(filePath);
