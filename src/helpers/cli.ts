@@ -7,7 +7,7 @@ export const helpFlag = (opts: Partial<Interfaces.BooleanFlag<boolean>> = {}) =>
     parse: async (_, cmd) => {
       const { loadHelpClass } = await import("@oclif/core/lib/help");
 const HelpClass = await loadHelpClass(cmd.config);
-await new HelpClass(cmd.config).showHelp([cmd.id]);
+await new HelpClass(cmd.config).showHelp(cmd.id ? [cmd.id] : []);
       return cmd.exit(0) as never;
     }
   });
