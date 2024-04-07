@@ -5,7 +5,8 @@ export const helpFlag = (opts: Partial<Interfaces.BooleanFlag<boolean>> = {}) =>
     description: "Show CLI help.",
     ...opts,
     parse: async (_, cmd) => {
-      const HelpClass = await import("@oclif/core/lib/help").default(cmd.config);
+      const { loadHelpClass } = await import("@oclif/core/lib/help");
+const HelpClass = await loadHelpClass(cmd.config);
 await new HelpClass(cmd.config).showHelp([cmd.id]);
       return cmd.exit(0) as never;
     }
