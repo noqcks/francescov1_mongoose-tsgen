@@ -5,7 +5,8 @@ export const helpFlag = (opts: Partial<Interfaces.BooleanFlag<boolean>> = {}) =>
     description: "Show CLI help.",
     ...opts,
     parse: async (_, cmd) => {
-      new Help(cmd.config).showCommandHelp(cmd.constructor as Command.Class);
+      const HelpClass = await loadHelpClass(cmd.config);
+await new HelpClass(cmd.config).showHelp([cmd.id]);
       return cmd.exit(0) as never;
     }
   });
